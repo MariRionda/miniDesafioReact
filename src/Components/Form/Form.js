@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Form.css'
 
 const formData = {
     name: '',
@@ -8,6 +9,7 @@ const formData = {
 
 const Form = () => {
     const [form, setForm] = useState(formData);
+    const [b,setB] = useState(false)
 
     const handleChange = (e) => {
         setForm({
@@ -19,6 +21,10 @@ const Form = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(form)
+        if(form.name!=="" && form.age!=="" && form.hobbie!==""){
+            setB(true)
+        }
+        else {alert("Faltan datos")}
         setForm(formData);
     }
 
@@ -35,7 +41,6 @@ const Form = () => {
                         <h1 className='form-title'>New Object</h1>
                         <input
                             type="text"
-                            value={form.name}
                             id="name"
                             name="name"
                             onChange={handleChange}
@@ -43,7 +48,6 @@ const Form = () => {
                         />
                         <input
                             type="text"
-                            value={form.age}
                             id="age"
                             name="age"
                             onChange={handleChange}
@@ -51,7 +55,6 @@ const Form = () => {
                         />
                         <input
                             type="text"
-                            value={form.hobbie}
                             id="hobbie"
                             name="hobbie"
                             onChange={handleChange}
@@ -63,6 +66,16 @@ const Form = () => {
                         <button onClick={handleSubmit} className='btn3'> ✔ </button>
                     </div>
                 </form>
+                <div>
+                    {b===true?
+                    <div>
+                        <p>Name = {form.name}</p>
+                        <p>Age = {form.age}</p>
+                        <p>Hobbie = {form.hobbie}</p>
+                    </div>
+                    : <p></p>
+                    }
+                </div>
             </div>
         </div>
     );

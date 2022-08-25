@@ -1,17 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './Landing.css'
 
 const Landing = () => {
     return(
-        <div>
-            <div>
+        <div className="background">
+            <div className="buttons">
                 <Link to="/table">
-                    <button className="button1">Table</button>
+                    <button className="btnHover">Table</button>
                 </Link>
             </div>
-            <div>
+            <div className="buttons">
                 <Link to="/form">
-                    <button className="button2">Form</button>
+                    <button className="btnHover">Form</button>
                 </Link>
             </div>
         </div>
